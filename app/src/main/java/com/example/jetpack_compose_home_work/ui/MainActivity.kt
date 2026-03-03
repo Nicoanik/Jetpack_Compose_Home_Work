@@ -15,6 +15,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -56,25 +57,29 @@ class MainActivity : ComponentActivity() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(contact)
-            Row {
-                Text(
-                    style = MaterialTheme.typography.h6,
-                    text = contact.name
-                )
-                contact.surname?.let {
-                    Text(
-                        style = MaterialTheme.typography.h6,
-                        text = " ${contact.surname}"
-                    )
+            val fullName = remember(contact.name, contact.surname) {
+                buildString {
+                    append(contact.name)
+                    contact.surname?.let { append(" $it") }
                 }
             }
+            Text(
+                style = MaterialTheme.typography.h6,
+                text = fullName
+            )
+
             Row(
                 modifier = Modifier.padding(bottom = 50.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                val familyName = remember(contact.familyName) {
+                    buildString {
+                        append(contact.familyName)
+                    }
+                }
                 Text(
                     style = MaterialTheme.typography.h5,
-                    text = contact.familyName
+                    text = familyName
                 )
                 if (contact.isFavorite) Image(
                     modifier = Modifier.padding(start = 8.dp),
@@ -105,9 +110,12 @@ class MainActivity : ComponentActivity() {
                     contentDescription = null,
                     tint = Color.LightGray
                 )
+                val initials = remember(contact.name, contact.familyName) {
+                    buildString { append("${contact.name.take(1)}${contact.familyName.take(1)}") }
+                }
                 Text(
                     style = MaterialTheme.typography.h6,
-                    text = "${contact.name.take(1)}${contact.familyName.take(1)}"
+                    text = initials
                 )
             }
         } else {
