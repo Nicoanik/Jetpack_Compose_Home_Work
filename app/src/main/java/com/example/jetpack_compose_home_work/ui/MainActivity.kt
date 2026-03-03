@@ -61,10 +61,12 @@ class MainActivity : ComponentActivity() {
                     style = MaterialTheme.typography.h6,
                     text = contact.name
                 )
-                Text(
-                    style = MaterialTheme.typography.h6,
-                    text = " ${contact.surname.orEmpty()}"
-                )
+                contact.surname?.let {
+                    Text(
+                        style = MaterialTheme.typography.h6,
+                        text = " ${contact.surname}"
+                    )
+                }
             }
             Row(
                 modifier = Modifier.padding(bottom = 50.dp),
