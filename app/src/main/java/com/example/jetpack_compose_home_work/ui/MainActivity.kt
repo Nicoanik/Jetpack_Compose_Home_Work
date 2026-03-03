@@ -30,7 +30,20 @@ import com.example.jetpack_compose_home_work.domain.Contact
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {}
+        setContent {
+            ContactDetails(
+                Contact(
+                    name = "Евгений",
+                    surname = "Андреевич",
+                    familyName = "Лукашин",
+                    imageRes = null,
+                    isFavorite = true,
+                    phone = "+7 495 495 95 95",
+                    address = "г. Москва, 3-я улица Строителей, д. 25, кв. 12",
+                    email = "ELukashin@practicum.ru"
+                )
+            )
+        }
     }
 
     @Composable
