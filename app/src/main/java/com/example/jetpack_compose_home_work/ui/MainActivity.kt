@@ -74,7 +74,7 @@ class MainActivity : ComponentActivity() {
                     style = MaterialTheme.typography.h5,
                     text = contact.familyName
                 )
-                if (contact.isFavorite) androidx.compose.foundation.Image(
+                if (contact.isFavorite) Image(
                     modifier = Modifier.padding(start = 8.dp),
                     painter = painterResource(android.R.drawable.star_big_on),
                     contentDescription = null
