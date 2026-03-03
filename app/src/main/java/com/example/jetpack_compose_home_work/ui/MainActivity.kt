@@ -93,8 +93,8 @@ class MainActivity : ComponentActivity() {
         if (contact.imageRes == null) {
             Box(
                 modifier = Modifier
-                    .size(width = 100.dp, height = 66.dp)
-                    .padding(vertical = 16.dp),
+                    .padding(vertical = 16.dp)
+                    .size(width = 100.dp, height = 66.dp),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -111,8 +111,8 @@ class MainActivity : ComponentActivity() {
         } else {
             Image(
                 modifier = Modifier
-                    .size(width = 100.dp, height = 66.dp)
-                    .padding(vertical = 16.dp),
+                    .padding(vertical = 16.dp)
+                    .size(width = 100.dp, height = 66.dp),
                 painter = painterResource(contact.imageRes),
                 contentScale = ContentScale.Crop,
                 contentDescription = null
