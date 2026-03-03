@@ -3,6 +3,7 @@ package com.example.jetpack_compose_home_work.ui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -92,8 +93,8 @@ class MainActivity : ComponentActivity() {
         if (contact.imageRes == null) {
             Box(
                 modifier = Modifier
-                    .padding(all = 16.dp)
-                    .size(width = 100.dp, height = 66.dp),
+                    .size(width = 100.dp, height = 66.dp)
+                    .padding(vertical = 16.dp),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -108,10 +109,10 @@ class MainActivity : ComponentActivity() {
                 )
             }
         } else {
-            androidx.compose.foundation.Image(
+            Image(
                 modifier = Modifier
-                    .padding(vertical = 16.dp)
-                    .size(width = 100.dp, height = 66.dp),
+                    .size(width = 100.dp, height = 66.dp)
+                    .padding(vertical = 16.dp),
                 painter = painterResource(contact.imageRes),
                 contentScale = ContentScale.Crop,
                 contentDescription = null
